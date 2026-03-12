@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop Agent</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Local Control Surface</p>
+          <h1>Desktop Agent</h1>
+          <p class="summary">
+            Minimal request UI for your local agent, with live logs and a
+            global <span>Ctrl+Backspace</span> kill switch.
+          </p>
+        </div>
+        <div class="status-card" id="statusCard">
+          <div class="status-dot" id="statusDot"></div>
+          <div>
+            <p class="status-label">Status</p>
+            <p class="status-value" id="statusText">Idle</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel request-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Prompt</p>
+              <h2>Tell the agent what to do</h2>
+            </div>
+            <div class="shortcut-pill">Ctrl+Enter to run</div>
+          </div>
+
+          <label class="prompt-frame">
+            <textarea
+              id="promptInput"
+              placeholder="Open Firefox, go to docs, summarize the page, and save the notes locally."
+            ></textarea>
+          </label>
+
+          <div class="actions">
+            <button class="primary" id="startButton">Start Run</button>
+            <button class="secondary" id="stopButton" disabled>Stop</button>
+          </div>
+        </section>
+
+        <section class="panel log-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Telemetry</p>
+              <h2>Live session log</h2>
+            </div>
+            <div class="shortcut-pill muted">Global kill: Ctrl+Backspace</div>
+          </div>
+
+          <pre id="logOutput">Ready.
+This UI launches the agent in WSL with conda run -n agent-graph-env.</pre>
+        </section>
+      </main>
+    </div>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
