@@ -5,9 +5,12 @@
   "description": "Minimal Electron UI for a local desktop agent",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack:win": "electron-packager . \"Desktop Agent\" --platform=win32 --arch=x64 --out=dist --overwrite --asar --prune=true --ignore=\"^/dist($|/)\" --ignore=\"^/\\.git($|/)\" --ignore=\"^/__pycache__($|/)\"",
+    "dist:win": "npm run pack:win"
   },
   "devDependencies": {
-    "electron": "^35.1.4"
+    "electron": "^35.1.4",
+    "electron-packager": "^17.1.2"
   }
 }

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut, ipcMain } = require("electron");
+const { app, BrowserWindow, globalShortcut, ipcMain, Menu } = require("electron");
 const { spawn } = require("child_process");
 const path = require("path");
 
@@ -71,6 +71,8 @@ function broadcastState(extra = {}) {
 }
 
 function createWindow() {
+  Menu.setApplicationMenu(null);
+
   mainWindow = new BrowserWindow({
     title: APP_TITLE,
     width: 1100,
@@ -79,6 +81,7 @@ function createWindow() {
     minHeight: 620,
     backgroundColor: "#0f1411",
     titleBarStyle: "hiddenInset",
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
@@ -90,14 +93,14 @@ function createWindow() {
 }
 
 function registerGlobalKillShortcut() {
-  const ok = globalShortcut.register("CommandOrControl+Backspace", () => {
+  const ok = globalShortcut.register("CommandOrControl+=", () => {
     stopAgent("global hotkey");
   });
 
   appendLog(
     ok
-      ? "Global Ctrl+Backspace registered.\n"
-      : "Global Ctrl+Backspace registration failed.\n"
+      ? "Global Ctrl+= registered.\n"
+      : "Global Ctrl+= registration failed.\n"
   );
 }
 

@@ -17,7 +17,7 @@
           <h1>Desktop Agent</h1>
           <p class="summary">
             Minimal request UI for your local agent, with live logs and a
-            global <span>Ctrl+Backspace</span> kill switch.
+            global <span>Ctrl+=</span> kill switch.
           </p>
         </div>
         <div class="status-card" id="statusCard">
@@ -32,11 +32,14 @@
       <main class="layout">
         <section class="panel request-panel">
           <div class="panel-head">
-            <div>
+            <div class="panel-title-group">
               <p class="panel-kicker">Prompt</p>
               <h2>Tell the agent what to do</h2>
+              <p class="panel-note">
+                <span class="panel-note-key">Ctrl+Enter</span>
+                runs the current prompt
+              </p>
             </div>
-            <div class="shortcut-pill">Ctrl+Enter to run</div>
           </div>
 
           <label class="prompt-frame">
@@ -54,11 +57,14 @@
 
         <section class="panel log-panel">
           <div class="panel-head">
-            <div>
+            <div class="panel-title-group">
               <p class="panel-kicker">Telemetry</p>
               <h2>Live session log</h2>
+              <p class="panel-note muted-note">
+                Output from the local agent loop and Windows control bridge.
+              </p>
             </div>
-            <div class="shortcut-pill muted">Global kill: Ctrl+Backspace</div>
+            <div class="shortcut-pill muted">Global kill: Ctrl+=</div>
           </div>
 
           <pre id="logOutput">Ready.
